@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal homepage for CSE 391 - Programming for the Internet">
+    <meta name="author" content="Your Name">
+    <title>My Personal Homepage | CSE 391</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Internal CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Navigation */
+        nav {
+            background: #2c3e50;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Sections */
+        section {
+            padding: 3rem 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #3498db;
+        }
+
+        /* Quote Section */
+        .quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            text-align: center;
+            color: #555;
+            padding: 2rem;
+            background: #f0f0f0;
+            border-left: 4px solid #3498db;
+            margin: 2rem 0;
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #777;
+        }
+
+        /* Lists */
+        .content-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .content-list li {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .content-list li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Table Styles */
+        .responsive-table {
+            width: 100%;
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        table th {
+            background: #3498db;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        table tr:hover {
+            background: #e9ecef;
+            transition: background 0.3s ease;
+        }
+
+        /* Links Section */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .link-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .link-card h3 {
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .link-card a {
+            color: #2c3e50;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .link-card a:hover {
+            color: #3498db;
+            padding-left: 10px;
+        }
+
+        /* Images */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Text Formatting */
+        .highlight {
+            background: #fff3cd;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+        }
+
+        .emphasis {
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            .responsive-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Technical Skills</a></li>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#favorites">Favorites</a></li>
+                <li><a href="#links">Important Links</a></li>
+            </ul>
+        </nav>
+
+        <!-- Header with Profile -->
+        <header>
+            <img src="D:\Cse 391 assignment\IMG_20250413_122418.jpg" alt="Profile Photo" class="profile-img">
+            <h1>MD.Fazlul Karim</h1>
+            <p>Computer Science & Engineering Student | BRAC University</p>
+        </header>
+
+        <!-- About Me Section -->
+        <section id="about">
+            <h2>Personal Information</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Hello! I'm a passionate <span class="emphasis">Computer Science student</span> at 
+                    <a href="https://www.bracu.ac.bd/" target="_blank" style="color: #3498db; text-decoration: none; font-weight: 600;">BRAC University</a>, 
+                    I have a strong interest in <b>web development</b>, <i>software engineering</i>, 
+                    and <span class="highlight">emerging technologies</span>.
+                    
+                </p>
+            </div>
+
+            <div class="quote">
+                "The only way to do great work is to love what you do."
+                <span class="quote-author">— Steve Jobs</span>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="responsive-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Degree</th>
+                            <th>Institution</th>
+                            <th>Year</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2"><strong>B.Sc. in CS</strong></td>
+                            <td rowspan="2">BRAC University</td>
+                            <td rowspan="2">2023 - Present</td>
+                            <td>
+                                Pursuing Bachelor of Science in Computer Science and Engineering with focus on software development, 
+                                algorithms, and web technologies.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Relevant Courses:</strong> Data Structures, Algorithms, Object-Oriented Programming, 
+                                Database Management Systems, Software Engineering, and Programming for the Internet (CSE 391).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Higher Secondary</td>
+                            <td>Dhaka College</td>
+                            <td>2019 - 2021</td>
+                            <td>Science.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="responsive-table">
+                <table>
+                    <tr>
+                        <th>Category</th>
+                        <th>Skills</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Programming Languages</strong></td>
+                        <td>Python, JavaScript</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Web Technologies</strong></td>
+                        <td>HTML5, CSS3, JavaScript</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Database</strong></td>
+                        <td>MySQL</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tools & Frameworks</strong></td>
+                        <td>Git, GitHub, VS Code</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Other Skills</strong></td>
+                        <td>Problem Solving, Algorithm Design</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Interests Section -->
+        <section id="interests">
+            <h2>Interests & Hobbies</h2>
+            <div class="image-gallery">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600" alt="Gaming Setup">
+                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600" alt="Football Sports">
+                <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600" alt="Music and Audio">
+            </div>
+
+            <div class="links-grid">
+                <div class="link-card">
+                    <h3>🎮 Gaming</h3>
+                    <p>I enjoy strategy games and competitive gaming. Currently playing Valorant and PUBG .</p>
+                </div>
+                <div class="link-card">
+                    <h3>📚 Reading</h3>
+                    <p>Love reading manga and staying updated with the latest in technology.</p>
+                </div>
+                <div class="link-card">
+                    <h3>⚽ Sports</h3>
+                    <p>Active football enthusiast and enjoy playing cricket during weekends with friends.</p>
+                </div>
+                <div class="link-card">
+                    <h3>🎵 Music</h3>
+                    <p>Listen to various genres including rock, electronic, and classical music while coding.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Favorites Section -->
+        <section id="favorites">
+            <h2>Top 10 Favorite Movies</h2>
+            <ul class="content-list">
+                <li><strong>1.</strong> 3 Idiots - <i>Inspiring comedy-drama about friendship and following your passion</i></li>
+                <li><strong>2.</strong> PK - <i>Thought-provoking satire questioning blind faith and traditions</i></li>
+                <li><strong>3.</strong> Nezha - <i>Stunning Chinese animation about destiny and self-determination</i></li>
+                <li><strong>4.</strong> Avatar - <i>Groundbreaking visual masterpiece with powerful environmental themes</i></li>
+                <li><strong>5.</strong> The Lion King - <i>Timeless Disney classic about courage and finding your place</i></li>
+                <li><strong>6.</strong> Inception - <i>Mind-bending thriller about dreams within dreams</i></li>
+                <li><strong>7.</strong> Train to Busan - <i>Intense Korean zombie thriller with emotional depth</i></li>
+                <li><strong>8.</strong> Get Out - <i>Brilliant psychological horror with sharp social commentary</i></li>
+                <li><strong>9.</strong> Kung Fu Panda - <i>Hilarious and heartwarming tale about believing in yourself</i></li>
+                <li><strong>10.</strong> La La Land - <i>Beautiful musical romance about dreams and love in Los Angeles</i></li>
+            </ul>
+        </section>
+
+        <!-- Important Links Section -->
+        <section id="links">
+            <h2>Important Links</h2>
+            <div class="links-grid">
+                <div class="link-card">
+                    <h3>🎓 Academic</h3>
+                    <a href="https://www.bracu.ac.bd/" target="_blank">BRAC University Official Website</a>
+                    <a href="https://discord.gg/cse391" target="_blank">CSE 391 Discord Community</a>
+                    <a href="https://www.bracu.ac.bd/academics/departments/computer-science-and-engineering" target="_blank">CSE Department</a>
+                </div>
+                <div class="link-card">
+                    <h3>💻 Learning Resources</h3>
+                    <a href="https://www.apnacollege.in/" target="_blank">Apna College</a>
+                    <a href="https://developer.mozilla.org/" target="_blank">MDN Web Docs</a>
+                    <a href="https://leetcode.com/" target="_blank">LeetCode</a>
+                </div>
+                <div class="link-card">
+                    <h3>🔧 Development Tools</h3>
+                    <a href="https://github.com/" target="_blank">GitHub</a>
+                    <a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a>
+                    <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>
+                </div>
+                <div class="link-card">
+                    <h3>🌐 Social & Professional</h3>
+                    <a href="https://www.linkedin.com/in/fazlul-karim-617626315/" target="_blank">LinkedIn Profile</a>
+                    <a href="https://github.com/Fazlul105" target="_blank">GitHub Portfolio</a>
+                    <a href="md.fazlul.karim@g.bracu.ac.bd">Email Me</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 Md.Fazlul Karim. All rights reserved.</p>
+            <p id="location"></p>
+            <p id="lastModified"></p>
+        </footer>
+    </div>
+
+    <script>
+        // Display page location and last modification date
+        document.getElementById('location').textContent = 'Page Location: ' + window.location.href;
+        document.getElementById('lastModified').textContent = 'Last Modified: ' + document.lastModified;
+    </script>
+</body>
+</html>
